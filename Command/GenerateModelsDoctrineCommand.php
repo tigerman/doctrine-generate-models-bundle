@@ -201,7 +201,7 @@ CONTENT;
             $srcDir = realpath($kernel->getRootDir().'/../src');
             $bundles = $kernel->getBundles();
             foreach ($bundles as $bundle) {
-                if (substr_compare($bundle->getPath(), $srcDir, 0, strlen($srcDir)) === 0) {
+                if (strlen($srcDir) > 0 && substr_compare($bundle->getPath(), $srcDir, 0, strlen($srcDir)) === 0) {
                     $command = $application->find('doctrine:generate:models');
                     $arguments = array(
                         'command' => $command->getName(),
