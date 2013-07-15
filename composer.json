@@ -1,0 +1,24 @@
+{
+    "name": "tigerman/doctrine-generate-models-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony2 bundle to generate model classes from your mapping information from YAML.",
+    "keywords": ["Symfony2", "ORM", "Database"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igor «tigerman» Bekrenyov",
+            "email": "tigerman@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*",
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/doctrine-bundle": "1.2.*"
+    },
+    "autoload": {
+        "psr-0": { "tigerman\\DoctrineGenerateModelsBundle": "" }
+    },
+    "target-dir": "tigerman/DoctrineGenerateModelsBundle",
+    "minimum-stability": "stable"
+}
