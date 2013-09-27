@@ -202,13 +202,15 @@ CONTENT;
             $bundles = $kernel->getBundles();
             foreach ($bundles as $bundle) {
                 if (strlen($srcDir) > 0 && substr_compare($bundle->getPath(), $srcDir, 0, strlen($srcDir)) === 0) {
-                    $command = $application->find('doctrine:generate:models');
-                    $arguments = array(
-                        'command' => $command->getName(),
-                        'bundle'  => $bundle->getName(),
-                    );
-                    $input = new ArrayInput($arguments);
-                    $command->run($input, $output);
+                    if (is_dir($bundle->getPath().'/Resources/config/doctrine/')) {
+                        $command = $application->find('doctrine:generate:models');
+                        $arguments = array(
+                            'command' => $command->getName(),
+                            'bundle'  => $bundle->getName(),
+                        );
+                        $input = new ArrayInput($arguments);
+                        $command->run($input, $output);
+                    }
                 }
             }
         }
