@@ -8,7 +8,6 @@ use Doctrine\ORM\Tools\EntityGenerator;
 use Doctrine\ORM\Tools\EntityRepositoryGenerator;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -51,7 +50,7 @@ HELP;
 
             /** @var $application \Symfony\Bundle\FrameworkBundle\Console\Application */
             $application = $this->getApplication();
-            $bundle = $application->getKernel()->getBundle($input->getArgument('bundle'));
+            $bundle = $application->getKernel()->getBundle($bundle_name);
             $output->writeln('Generating models '.($wl ? 'without listeners' : 'with listeners').' for bundle "<info>'.$bundle->getName().'</info>"');
 
             $driver = null;
@@ -188,7 +187,7 @@ CONTENT;
                 $command = $application->find('doctrine:generate:models');
                 $arguments = array(
                     'command'             => $command->getName(),
-                    'bundle'              => $input->getArgument('bundle'),
+                    'bundle'              => $bundle_name,
                     '--without-listeners' => false,
                 );
                 $input = new ArrayInput($arguments);
