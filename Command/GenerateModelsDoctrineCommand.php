@@ -123,12 +123,19 @@ HELP;
                 $model = str_replace("\n".'use Doctrine\ORM\Mapping as ORM;'."\n", '', $model);
 
                 $model = str_ireplace('* @preRemove', '* preRemove', $model);
+                $model = str_ireplace('* @ORM\preRemove', '* ORM\preRemove', $model);
                 $model = str_ireplace('* @postRemove', '* postRemove', $model);
+                $model = str_ireplace('* @ORM\postRemove', '* ORM\postRemove', $model);
                 $model = str_ireplace('* @prePersist', '* prePersist', $model);
+                $model = str_ireplace('* @ORM\prePersist', '* ORM\prePersist', $model);
                 $model = str_ireplace('* @postPersist', '* postPersist', $model);
+                $model = str_ireplace('* @ORM\postPersist', '* ORM\postPersist', $model);
                 $model = str_ireplace('* @preUpdate', '* preUpdate', $model);
+                $model = str_ireplace('* @ORM\preUpdate', '* ORM\preUpdate', $model);
                 $model = str_ireplace('* @postUpdate', '* postUpdate', $model);
+                $model = str_ireplace('* @ORM\postUpdate', '* ORM\postUpdate', $model);
                 $model = str_ireplace('* @postLoad', '* postLoad', $model);
+                $model = str_ireplace('* @ORM\postLoad', '* ORM\postLoad', $model);
                 $model = str_replace('* @loadClassMetadata', '* loadClassMetadata', $model);
                 $model = str_replace('* @onFlush', '* onFlush', $model);
 
@@ -152,7 +159,6 @@ HELP;
                 $model = preg_replace('#\* @param enum[a-z]+#', '\* @param string', $model);
                 $model = preg_replace('#\* @return enum[a-z]+#', '\* @return string', $model);
 
-                $model = $model."\n";
                 file_put_contents($mPath, $model);
 
                 unlink($ePath);
