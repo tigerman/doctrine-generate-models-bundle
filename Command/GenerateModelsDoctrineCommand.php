@@ -4,13 +4,13 @@ namespace tigerman\DoctrineGenerateModelsBundle\Command;
 
 use Doctrine\Bundle\DoctrineBundle\Mapping\DisconnectedMetadataFactory;
 use Doctrine\ORM\Events;
-use Doctrine\ORM\Tools\EntityGenerator;
 use Doctrine\ORM\Tools\EntityRepositoryGenerator;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use tigerman\DoctrineGenerateModelsBundle\Doctrine\ORM\Tools\EntityGenerator;
 
 class GenerateModelsDoctrineCommand extends ContainerAwareCommand
 {
