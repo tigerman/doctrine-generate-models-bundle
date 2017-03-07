@@ -190,9 +190,9 @@ CONTENT;
             }
 
             if ($wl) {
-                $command = $application->find('doctrine:generate:models');
+                $command = new GenerateModelsDoctrineCommand();
+                $command->setApplication($application);
                 $arguments = array(
-                    'command'             => $command->getName(),
                     'bundle'              => $bundle_name,
                     '--without-listeners' => false,
                 );
@@ -208,9 +208,9 @@ CONTENT;
             foreach ($bundles as $bundle) {
                 if (strlen($srcDir) > 0 && substr_compare($bundle->getPath(), $srcDir, 0, strlen($srcDir)) === 0) {
                     if (is_dir($bundle->getPath().'/Resources/config/doctrine/')) {
-                        $command = $application->find('doctrine:generate:models');
+                        $command = new GenerateModelsDoctrineCommand();
+                        $command->setApplication($application);
                         $arguments = array(
-                            'command' => $command->getName(),
                             'bundle'  => $bundle->getName(),
                         );
                         $input = new ArrayInput($arguments);
